@@ -8,14 +8,27 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
-import java.lang.Exception
 import java.math.BigDecimal
-import java.math.BigInteger
 
 //whenever you have any type of logging, the "TAG" is generally the classname
 private const val TAG = "MainActivity"
 
-private const val INITIAL_TIP_PERCENT = 15;
+public enum class RATINGS {ONE, TWO, THREE, FOUR, FIVE}
+private val INITIAL_TIP_PERCENT = 15;
+private val TIP_DESCRIPTIONS = mapOf<RATINGS, String>(
+    RATINGS.ONE to "Abominable",
+    RATINGS.TWO to "Poor",
+    RATINGS.THREE to "Average",
+    RATINGS.FOUR to "Great",
+    RATINGS.FIVE to "Amazing",
+)
+private val TIP_RANGES = mapOf<RATINGS, List<Int>>(
+    RATINGS.ONE to listOf<Int>(0, 5),
+    RATINGS.TWO to listOf<Int>(6, 10),
+    RATINGS.THREE to listOf<Int>(11, 20),
+    RATINGS.FOUR to listOf<Int>(21, 30),
+    RATINGS.FIVE to listOf<Int>(31, 50),
+)
 
 class MainActivity : AppCompatActivity() {
     //lateinit means we are initializing somewhere outside of the constructor
@@ -24,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvTipPercent: TextView
     private lateinit var tvTipAmount: TextView
     private lateinit var tvTotalAmount: TextView
+    private lateinit var tvTipDescription: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,14 +49,17 @@ class MainActivity : AppCompatActivity() {
         tvTipPercent = findViewById(R.id.tvTipPercent)
         tvTipAmount = findViewById(R.id.tvTipAmount)
         tvTotalAmount = findViewById(R.id.tvTotalAmount)
+        tvTipDescription = findViewById(R.id.tvTipDescription)
 
-        //setting initial values
-        seekBarTip.progress = INITIAL_TIP_PERCENT
-        tvTipPercent.text = "$INITIAL_TIP_PERCENT%"
-
-        //adding listeners
+        setInitialValues()
         addSeekBarListener()
         addTipBaseListener()
+    }
+
+    private fun setInitialValues() {
+        seekBarTip.progress = INITIAL_TIP_PERCENT
+        tvTipPercent.text = "$INITIAL_TIP_PERCENT%"
+        tvTipDescription.text = TIP_DESCRIPTIONS[RATINGS.ONE]
     }
 
     private fun addSeekBarListener() {
@@ -54,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "onProgressChanged $progress")
                 tvTipPercent.text = "$progress%"
                 computeTipAndTotal()
+                changeTipDescription()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -71,6 +89,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
                 computeTipAndTotal()
+                changeTipDescription()
             }
         })
     }
@@ -97,5 +116,8 @@ class MainActivity : AppCompatActivity() {
         //3.  Update UI
         tvTipAmount.text = String.format("%.2f", tipAmount);
         tvTotalAmount.text = String.format("%.2f", totalAfterTip);
+    }
+    private fun changeTipDescription() {
+        //Figure out which value to use
     }
 }

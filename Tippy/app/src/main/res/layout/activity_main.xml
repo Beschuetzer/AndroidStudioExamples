@@ -35,7 +35,7 @@
         android:id="@+id/tvTipLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         android:text="Tip"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="@id/tvBaseLabel"
@@ -67,9 +67,16 @@
 
     <SeekBar
         android:id="@+id/seekBarTip"
-        android:layout_width="220dp"
-        android:layout_height="20dp"
+        android:layout_width="248dp"
+        android:layout_height="18dp"
+        android:backgroundTint="#FFFFFF"
         android:max="50"
+        android:overScrollMode="ifContentScrolls"
+        android:paddingStart="16dip"
+        android:paddingEnd="16dip"
+        android:progressTint="@color/primary_blue"
+        android:thumbTint="@color/primary_blue"
+        android:translationX="-11dip"
         app:layout_constraintBottom_toBottomOf="@+id/tvTipPercent"
         app:layout_constraintStart_toStartOf="@+id/etBaseAmount"
         app:layout_constraintTop_toTopOf="@+id/tvTipPercent" />
@@ -93,5 +100,28 @@
         app:layout_constraintStart_toStartOf="@+id/tvTipAmount"
         app:layout_constraintTop_toTopOf="@+id/tvTotalLabel"
         tools:text="103.11" />
+
+    <TextView
+        android:id="@+id/tvFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="made with ❤️ by Adam"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTipDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toTopOf="@+id/tvTipAmount"
+        app:layout_constraintEnd_toEndOf="@+id/etBaseAmount"
+        app:layout_constraintStart_toStartOf="@+id/etBaseAmount"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarTip"
+        tools:text="Average" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
