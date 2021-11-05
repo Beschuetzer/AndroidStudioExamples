@@ -1,6 +1,7 @@
 package com.adammajor.tippy
 
 import android.animation.ArgbEvaluator
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -11,6 +12,8 @@ import android.widget.SeekBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import java.math.BigDecimal
+import kotlin.math.max
+import kotlin.math.pow
 
 //whenever you have any type of logging, the "TAG" is generally the classname
 private const val TAG = "MainActivity"
@@ -80,13 +83,26 @@ class MainActivity : AppCompatActivity() {
         tvTipDescription.text = TIP_DESCRIPTIONS[RATINGS.ONE]
         seekBarTip.max = MAX_TIP_PERCENT
 
+
+
+        val subDividingColors = GetSubDividingColors("abcabc", "123abc").colors(3);
         TIP_COLORS = mapOf<RATINGS, Int>(
-            RATINGS.ONE to ContextCompat.getColor(this, R.color.color_rating_one),
-            RATINGS.TWO to ContextCompat.getColor(this, R.color.color_rating_two),
-            RATINGS.THREE to ContextCompat.getColor(this, R.color.color_rating_three),
-            RATINGS.FOUR to ContextCompat.getColor(this, R.color.color_rating_four),
-            RATINGS.FIVE to ContextCompat.getColor(this, R.color.color_rating_five),
+            RATINGS.ONE to ContextCompat.getColor(this, R.color.color_rating_worst),
+            RATINGS.TWO to Color.parseColor(subDividingColors[0]),
+            RATINGS.THREE to Color.parseColor(subDividingColors[1]),
+            RATINGS.FOUR to Color.parseColor(subDividingColors[2]),
+            RATINGS.FIVE to ContextCompat.getColor(this, R.color.color_rating_best)
         )
+
+        //test cases
+//        GetSubDividingColors("abcabc", "123abc");
+//        GetSubDividingColors("#abcabc", "123abc");
+//        GetSubDividingColors("abcabc", "#123abc");
+//        GetSubDividingColors("#abcabc", "#123fbc");
+//        GetSubDividingColors("abCabF", "123bcF");
+//        GetSubDividingColors("#abcabc", "12Fabc");
+//        GetSubDividingColors("abcabc", "#12Fabc");
+//        GetSubDividingColors("#abcabc", "#123FbF");
     }
 
     private fun addSeekBarListener() {

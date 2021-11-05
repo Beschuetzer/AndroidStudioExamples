@@ -12,11 +12,11 @@
     <color name="darker_blue">#07256E</color>
     <color name="background_blue">#EFECFB</color>
 
-    <color name="color_rating_one">#0C1E8B</color>
-    <color name="color_rating_two">#0C1E8B</color>
-    <color name="color_rating_three">#35BA01</color>
-    <color name="color_rating_four">#2FA102</color>
-    <color name="color_rating_five">#113B01</color>
+<!--    <color name="color_rating_one">#0C1E8B</color>-->
+<!--    <color name="color_rating_two">#0C1E8B</color>-->
+<!--    <color name="color_rating_three">#35BA01</color>-->
+<!--    <color name="color_rating_four">#2FA102</color>-->
+<!--    <color name="color_rating_five">#113B01</color>-->
 
     <color name="color_rating_worst">#0C1E8B</color>
     <color name="color_rating_best">#35BA01</color>
