@@ -11,4 +11,15 @@
     <color name="primary_blue">#244B6E</color>
     <color name="darker_blue">#07256E</color>
     <color name="background_blue">#EFECFB</color>
+
+    <color name="color_rating_one">#EFECFB</color>
+    <color name="color_rating_two">#EFECFB</color>
+    <color name="color_rating_three">#EFECFB</color>
+    <color name="color_rating_four">#EFECFB</color>
+    <color name="color_rating_five">#EFECFB</color>
+
+    <color name="color_rating_worst">#DC1E8B</color>
+    <color name="color_rating_best">#35BA01</color>
+
+
 </resources>
