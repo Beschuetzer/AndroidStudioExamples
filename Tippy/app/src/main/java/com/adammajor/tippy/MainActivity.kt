@@ -42,15 +42,10 @@ private val TIP_RANGES_MAX = mapOf<RATINGS, Int>(
     RATINGS.FIVE to MAX_TIP_PERCENT
 )
 
+private var TIP_COLORS = mapOf<RATINGS, Int>()
+
 
 class MainActivity : AppCompatActivity() {
-    private val TIP_COLORS = mapOf<RATINGS, Int>(
-        RATINGS.ONE to ContextCompat.getColor(this, R.color.color_rating_one),
-        RATINGS.TWO to ContextCompat.getColor(this, R.color.color_rating_two),
-        RATINGS.THREE to ContextCompat.getColor(this, R.color.color_rating_three),
-        RATINGS.FOUR to ContextCompat.getColor(this, R.color.color_rating_four),
-        RATINGS.FIVE to ContextCompat.getColor(this, R.color.color_rating_five),
-    )
 
     //lateinit means we are initializing somewhere outside of the constructor
     private lateinit var etBaseAmount: EditText
@@ -84,6 +79,14 @@ class MainActivity : AppCompatActivity() {
         tvTipPercent.text = "$INITIAL_TIP_PERCENT%"
         tvTipDescription.text = TIP_DESCRIPTIONS[RATINGS.ONE]
         seekBarTip.max = MAX_TIP_PERCENT
+
+        TIP_COLORS = mapOf<RATINGS, Int>(
+            RATINGS.ONE to ContextCompat.getColor(this, R.color.color_rating_one),
+            RATINGS.TWO to ContextCompat.getColor(this, R.color.color_rating_two),
+            RATINGS.THREE to ContextCompat.getColor(this, R.color.color_rating_three),
+            RATINGS.FOUR to ContextCompat.getColor(this, R.color.color_rating_four),
+            RATINGS.FIVE to ContextCompat.getColor(this, R.color.color_rating_five),
+        )
     }
 
     private fun addSeekBarListener() {
